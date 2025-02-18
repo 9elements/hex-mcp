@@ -117,12 +117,12 @@ defmodule HexMcp.McpServer do
           first_release["version"]
 
         {:error, _} ->
-          "Unknown"
+          "Unknown package"
       end
     rescue
       error ->
         Logger.error("Error getting hex package version: #{inspect(error)}")
-        "Unknown"
+        "An error occured"
     end
   end
 
