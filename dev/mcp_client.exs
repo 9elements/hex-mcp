@@ -100,7 +100,7 @@ defmodule MCPClient do
       params: %{
         name: "hex_version_info",
         arguments: %{
-          package_name: "phoenix"
+          package_name: "openai_ex"
         }
       }
     }
@@ -113,7 +113,7 @@ defmodule MCPClient do
         response = Jason.decode!(data)
         [content_item | _] = response["result"]["content"]
         IO.puts("✓ Tool response:")
-        IO.puts("  Input: phoenix")
+        IO.puts("  Input: openai_ex")
         IO.puts("  Output: #{content_item["version"]}\n")
       after 5000 ->
         IO.puts("✗ Failed to receive tool response")

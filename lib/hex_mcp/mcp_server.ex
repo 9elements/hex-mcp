@@ -71,7 +71,7 @@ defmodule HexMcp.McpServer do
          content: [
            %{
              type: "text",
-             version: get_hex_package_version(package_name)
+             text: get_hex_package_version(package_name)
            }
          ]
        }
@@ -97,7 +97,7 @@ defmodule HexMcp.McpServer do
 
   defp get_hex_package_version(package_name) do
     try do
-      unless package_name =~ ~r/^[a-z0-9\-\.]+$/ do
+      unless package_name =~ ~r/^[a-z0-9\-\_\.]+$/ do
         raise "Invalid package name format. Package names can only contain lowercase letters, numbers, dots, and dashes."
       end
 
@@ -120,7 +120,8 @@ defmodule HexMcp.McpServer do
           "Unknown"
       end
     rescue
-      _ ->
+      error ->
+        Logger.error("Error getting hex package version: #{inspect(error)}")
         "Unknown"
     end
   end
