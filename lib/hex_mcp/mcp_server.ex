@@ -17,8 +17,6 @@ defmodule HexMcp.McpServer do
 
   @impl true
   def handle_initialize(request_id, params) do
-    Logger.info("Client initialization params: #{inspect(params, pretty: true)}")
-
     case validate_protocol_version(params["protocolVersion"]) do
       :ok ->
         {:ok,
@@ -29,13 +27,14 @@ defmodule HexMcp.McpServer do
              protocolVersion: @protocol_version,
              capabilities: %{
                tools: %{
-                 listChanged: true
+                 listChanged: false
                }
              },
              serverInfo: %{
-               name: "SSH Hex Package MCP Server",
+               name: "Hex Package MCP Server",
                version: "0.1.0"
-             }
+             },
+             tools: tools_list()
            }
          }}
 
@@ -59,10 +58,8 @@ defmodule HexMcp.McpServer do
   @impl true
   def handle_call_tool(
         request_id,
-        %{"name" => "hex_version_info", "arguments" => %{"package_name" => package_name}} = params
+        %{"name" => "hex_version_info", "arguments" => %{"package_name" => package_name}}
       ) do
-    Logger.debug("Handling hex_version_info tool call with params: #{inspect(params)}")
-
     {:ok,
      %{
        jsonrpc: "2.0",
@@ -78,9 +75,7 @@ defmodule HexMcp.McpServer do
      }}
   end
 
-  def handle_call_tool(request_id, %{"name" => unknown_tool} = params) do
-    Logger.warning("Unknown tool called: #{unknown_tool} with params: #{inspect(params)}")
-
+  def handle_call_tool(request_id, %{"name" => unknown_tool}) do
     {:error,
      %{
        jsonrpc: "2.0",
@@ -95,34 +90,34 @@ defmodule HexMcp.McpServer do
      }}
   end
 
+  defp get_hex_package_version(package_name) when not is_binary(package_name),
+    do: "Invalid package name"
+
+  defp get_hex_package_version(package_name) when byte_size(package_name) < 2,
+    do: "Invalid package name"
+
+  defp get_hex_package_version(package_name) when byte_size(package_name) > 60,
+    do: "Invalid package name"
+
   defp get_hex_package_version(package_name) do
-    try do
-      unless package_name =~ ~r/^[a-z0-9\-\_\.]+$/ do
-        raise "Invalid package name format. Package names can only contain lowercase letters, numbers, dots, and dashes."
-      end
+    if package_name =~ ~r/^[a-z0-9\-\_\.]+$/ do
+      try do
+        case HTTPoison.get("https://hex.pm/api/packages/#{package_name}") do
+          {:ok, %HTTPoison.Response{body: body}} ->
+            decoded = Jason.decode!(body)
+            [first_release | _] = decoded["releases"]
+            first_release["version"]
 
-      # Validate package name length
-      if String.length(package_name) < 2 do
-        raise "Package name must be at least 2 characters long"
+          {:error, _} ->
+            "Unknown package"
+        end
+      rescue
+        error ->
+          Logger.error("Error getting hex package version: #{inspect(error)}")
+          "An error occured"
       end
-
-      if String.length(package_name) > 60 do
-        raise "Package name cannot be longer than 60 characters"
-      end
-
-      case HTTPoison.get("https://hex.pm/api/packages/#{package_name}") do
-        {:ok, %HTTPoison.Response{body: body}} ->
-          decoded = Jason.decode!(body)
-          [first_release | _] = decoded["releases"]
-          first_release["version"]
-
-        {:error, _} ->
-          "Unknown package"
-      end
-    rescue
-      error ->
-        Logger.error("Error getting hex package version: #{inspect(error)}")
-        "An error occured"
+    else
+      "Invalid package name"
     end
   end
 
@@ -130,7 +125,8 @@ defmodule HexMcp.McpServer do
     [
       %{
         name: "hex_version_info",
-        description: "Returns the latest version of the hex package",
+        description:
+          "Returns the latest version of the hex package. Use it to check for the latest heck package version when installing new Elixir dependencies",
         inputSchema: %{
           type: "object",
           required: ["package_name"],
