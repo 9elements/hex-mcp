@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" class="[scrollbar-gutter:stable]">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title default="HexMcp" suffix=" · Phoenix Framework">
-      {assigns[:page_title]}
-    </.live_title>
+    <!-- Primary Meta Tags -->
+    <title>Hex MCP Server - Package Versions for AI Tools</title>
+    <meta name="title" content="Hex MCP Server - Package Versions for AI Tools" />
+    <meta
+      name="description"
+      content="Help AI tools like Cursor to automatically use the correct package versions when adding them to your Elixir projects."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hex-mcp.9elements.com/" />
+    <meta property="og:title" content="Hex MCP Server - Package Versions for AI Tools" />
+    <meta
+      property="og:description"
+      content="Help AI tools like Cursor to automatically use the correct package versions when adding them to your Elixir projects."
+    />
+    <meta property="og:image" content={~p"/images/sharing.png"} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://hex-mcp.9elements.com/" />
+    <meta property="twitter:title" content="Hex MCP Server - Package Versions for AI Tools" />
+    <meta
+      property="twitter:description"
+      content="Help AI tools like Cursor to automatically use the correct package versions when adding them to your Elixir projects."
+    />
+    <meta property="twitter:image" content={~p"/images/sharing.png"} />
+    <!-- End of Meta Tags -->
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
