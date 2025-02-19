@@ -26,6 +26,10 @@ To start your Phoenix server locally:
 2. Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 3. Visit [`localhost:4000`](http://localhost:4000) from your browser
 
+## Disclaimer
+
+While this service uses the API provided by hex.pm, we are not affiliated with or endorsed by hex.pm. The service is provided as-is without any warranty. Use at your own discretion.
+
 ## Production Deployment
 
 For production deployment instructions, please refer to the [Phoenix deployment guides](https://hexdocs.pm/phoenix/deployment.html).
