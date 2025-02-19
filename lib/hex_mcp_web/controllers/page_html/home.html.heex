@@ -1,99 +1,124 @@
 <div class="min-h-screen bg-gray-50">
-  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-        <span class="block">MCP Server for</span>
-        <span class="block text-indigo-600">Hex Package Versions</span>
-      </h1>
-      <p class="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
-        Help AI tools like Cursor to automatically use the correct package versions when adding them to your Elixir projects.
-      </p>
+  <div class="relative">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-b from-indigo-50/80 to-gray-50">
+        <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path
+                d="M0 40L40 0M0 0L40 40"
+                stroke="rgb(79 70 229 / 0.1)"
+                stroke-width="1"
+                fill="none"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+      <!-- Radial Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/80 to-gray-50">
+      </div>
     </div>
+    
+<!-- Content -->
+    <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+          <span class="block">MCP Server for</span>
+          <span class="block text-indigo-600">Hex Package Versions</span>
+        </h1>
+        <p class="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
+          Help AI tools like Cursor to automatically use the correct package versions when adding them to your Elixir projects.
+        </p>
+      </div>
 
-    <div class="mt-16">
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div class="space-y-8">
-          <!-- What is MCP -->
-          <div class="rounded-lg bg-white p-6 shadow-lg">
-            <h2 class="text-2xl font-semibold text-gray-900">What is MCP</h2>
-            <p class="mt-4 text-gray-600">
-              The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to LLMs.
-              Think of it like a USB-C port for AI applications.
-            </p>
-            <a
-              href="https://modelcontextprotocol.io/introduction"
-              class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800"
-            >
-              Learn more about MCP
-              <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </a>
-          </div>
-          
+      <div class="mt-16">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div class="space-y-8">
+            <!-- What is MCP -->
+            <div class="rounded-lg bg-white p-6 shadow-lg">
+              <h2 class="text-2xl font-semibold text-gray-900">What is MCP</h2>
+              <p class="mt-4 text-gray-600">
+                The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to LLMs.
+                Think of it like a USB-C port for AI applications.
+              </p>
+              <a
+                href="https://modelcontextprotocol.io/introduction"
+                class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800"
+              >
+                Learn more about MCP
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+            
 <!-- How to Use -->
-          <div class="rounded-lg bg-white p-6 shadow-lg">
-            <h2 class="text-2xl font-semibold text-gray-900">Add to Cursor</h2>
-            <p class="mt-4 text-gray-600">
-              Cursor supports MCP servers out of the box. Add this server to Cursor to get accurate Hex package version suggestions.
-            </p>
-            <a
-              href="https://docs.cursor.com/context/model-context-protocol#model-context-protocol"
-              class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800"
-            >
-              Setup instructions
-              <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </a>
-          </div>
-          
+            <div class="rounded-lg bg-white p-6 shadow-lg">
+              <h2 class="text-2xl font-semibold text-gray-900">Add to Cursor</h2>
+              <p class="mt-4 text-gray-600">
+                Cursor supports MCP servers out of the box. Add this server to Cursor to get accurate Hex package version suggestions.
+              </p>
+              <a
+                href="https://docs.cursor.com/context/model-context-protocol#model-context-protocol"
+                class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800"
+              >
+                Setup instructions
+                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+            
 <!-- Server URL -->
-          <div class="rounded-lg bg-white p-6 shadow-lg">
-            <h2 class="text-2xl font-semibold text-gray-900">Server URL</h2>
-            <p class="mt-4 text-gray-600">
-              You can use this server for your Cursor MCP configuration.
-            </p>
-            <div class="mt-4">
-              <div class="rounded-md bg-gray-50 p-4">
-                <code class="text-sm text-gray-700">https://hex-mcp.9elements.com/sse</code>
-                <button
-                  onclick="navigator.clipboard.writeText('https://hex-mcp.9elements.com/sse')"
-                  class="ml-2 inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-                >
-                  Copy
-                </button>
+            <div class="rounded-lg bg-white p-6 shadow-lg">
+              <h2 class="text-2xl font-semibold text-gray-900">Server URL</h2>
+              <p class="mt-4 text-gray-600">
+                You can use this server for your Cursor MCP configuration.
+              </p>
+              <div class="mt-4">
+                <div class="rounded-md bg-gray-50 p-4">
+                  <code class="text-sm text-gray-700">https://hex-mcp.9elements.com/sse</code>
+                  <button
+                    onclick="navigator.clipboard.writeText('https://hex-mcp.9elements.com/sse')"
+                    class="ml-2 inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                  >
+                    Copy
+                  </button>
+                </div>
               </div>
+            </div>
+            
+<!-- Disclaimer -->
+            <div class="rounded-lg bg-white p-6 shadow-lg">
+              <h2 class="text-2xl font-semibold text-gray-900">Disclaimer</h2>
+              <p class="mt-4 text-gray-600">
+                While this service uses the API provided by hex.pm, we are not affiliated with or endorsed by hex.pm. The service is provided as-is without any warranty. Use at your own discretion.
+              </p>
             </div>
           </div>
           
-<!-- Disclaimer -->
-          <div class="rounded-lg bg-white p-6 shadow-lg">
-            <h2 class="text-2xl font-semibold text-gray-900">Disclaimer</h2>
-            <p class="mt-4 text-gray-600">
-              While this service uses the API provided by hex.pm, we are not affiliated with or endorsed by hex.pm. The service is provided as-is without any warranty. Use at your own discretion.
-            </p>
-          </div>
-        </div>
-        
 <!-- Screenshot -->
-        <div class="flex items-center justify-center">
-          <div class="overflow-hidden rounded-lg shadow-lg max-w-lg">
-            <img
-              src={~p"/images/cursor_hex.png"}
-              alt="Screenshot of Cursor suggesting Hex package versions"
-              class="w-full object-cover"
-            />
+          <div class="flex items-center justify-center">
+            <div class="overflow-hidden rounded-lg shadow-lg max-w-lg">
+              <img
+                src={~p"/images/cursor_hex.png"}
+                alt="Screenshot of Cursor suggesting Hex package versions"
+                class="w-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -103,8 +128,8 @@
 <!-- Footer -->
   <footer class="bg-white mt-16">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <div class="flex justify-center space-x-6 text-gray-600">
-        <span>
+      <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 text-gray-600 text-sm text-center">
+        <span class="w-full sm:w-auto">
           Built with <.icon name="hero-heart-solid" class="text-indigo-600 bg-indigo-600" /> by
           <a href="https://dhoelzgen.dev" target="_blank" class="hover:underline">
             Daniel Hoelzgen
@@ -114,10 +139,25 @@
             9elements
           </a>
         </span>
-        <a href="https://9elements.com/imprint" target="_blank" class="hover:underline">
+        <a
+          href="https://github.com/9elements/hex-mcp"
+          target="_blank"
+          class="w-full sm:w-auto hover:underline"
+        >
+          Source on GitHub
+        </a>
+        <a
+          href="https://9elements.com/imprint"
+          target="_blank"
+          class="w-full sm:w-auto hover:underline"
+        >
           Imprint
         </a>
-        <a href="https://9elements.com/imprint" target="_blank" class="hover:underline">
+        <a
+          href="https://9elements.com/imprint"
+          target="_blank"
+          class="w-full sm:w-auto hover:underline"
+        >
           Privacy Policy
         </a>
       </div>
