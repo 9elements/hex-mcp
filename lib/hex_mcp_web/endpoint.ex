@@ -1,6 +1,9 @@
 defmodule HexMcpWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :hex_mcp
 
+  plug Plug.SSL,
+    rewrite_on: [:x_forwarded_proto]
+
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
